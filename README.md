@@ -13,6 +13,7 @@ First ensure you have Django 1.9 installed. Then:
 
     $ git clone https://github.com/kindkaktus/django-file-server
 	$ cd django-file-server
+    $ sudo pip install -r requirements.txt
 	$ ./manage.py migrate
 	$ sudo ./manage.py runserver 0.0.0.0:80
 

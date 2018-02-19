@@ -12,5 +12,5 @@ pip-selfcheck.json
 
 
 # minimal-django-file-upload-example related
-myproject/db.sqlite3
-myproject/media/documents/**
+db.sqlite3
+media/
