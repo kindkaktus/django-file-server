@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from django_file_server.myapp.models import Document
-from django_file_server.myapp.forms import DocumentForm
+from django_file_server.file_list.models import Document
+from django_file_server.file_list.forms import DocumentForm
 
 
 def list(request):
