@@ -3,14 +3,5 @@
 *.pyc
 local_settings.py
 
-# virtualenv related
-.Python
-bin/
-include/
-lib/
-pip-selfcheck.json
-
-
-# minimal-django-file-upload-example related
 db.sqlite3
 media/
