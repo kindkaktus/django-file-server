@@ -1,6 +1,8 @@
 Roadmap
 -----------
 - add authentication
+    https://blog.narenarya.in/right-way-django-authentication.html
+    https://simpleisbetterthancomplex.com/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html
 - add minimalistic UI (e.g. bootstrap)
 - explain how to run behind webserver (apache/nginx)
 - store uploaded files outside project root
