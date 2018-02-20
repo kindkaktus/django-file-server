@@ -17,3 +17,7 @@ First ensure you have Django 1.9 installed. Then:
 	$ ./manage.py migrate
 	$ sudo ./manage.py runserver 0.0.0.0:80
 
+Debugging
+
+    $ sudo ./manage.py runserver 0.0.0.0:80  --settings=django_file_server.settings_devel
+

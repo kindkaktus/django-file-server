@@ -1,6 +1,5 @@
 Roadmap
 -----------
-- differentiate production and devel settings
 - add authentication
 - add minimalistic UI (e.g. bootstrap)
 - explain how to run behind webserver (apache/nginx)

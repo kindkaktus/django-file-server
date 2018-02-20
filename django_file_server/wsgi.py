@@ -11,6 +11,10 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_file_server.settings")
+
+# Uncomment to enable debugging
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'django_file_server.settings_devel'
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_file_server.settings_production")
 
 application = get_wsgi_application()
