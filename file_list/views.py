@@ -2,11 +2,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
-from django_file_server.file_list.models import Document
-from django_file_server.file_list.forms import DocumentForm
+from models import Document
+from forms import DocumentForm
 
 
+@login_required(login_url="/login/")
 def list(request):
     # Handle file upload
     if request.method == 'POST':

@@ -1,7 +1,7 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+*.sublime-workspace
 
 db.sqlite3
 media/
