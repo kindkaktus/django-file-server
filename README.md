@@ -9,16 +9,21 @@ The project contains source code from [Django file upload example at https://git
 Django 1.11 is supported
 
 ------------------
-First ensure you have Django 1.9 installed. Then:
 
     $ git clone https://github.com/kindkaktus/django-file-server
 	$ cd django-file-server
+    $ sudo pip install --upgrade pip
     $ sudo pip install -r requirements.txt
 	$ ./manage.py migrate
     $ ./manage.py createsuperuser
-	$ sudo ./manage.py runserver 0.0.0.0:80
 
-Debugging
-
+Development server:
     $ sudo ./manage.py runserver 0.0.0.0:80  --settings=django_file_server.settings_devel
+
+Production server:
+    $ ./manage.py collectstatic --clear --no-input
+    $ sudo gunicorn --bind 0.0.0.0:80 --access-logfile - django_file_server.wsgi:application
+
+Checks:
+    $ ./manage.py check --deploy
 
