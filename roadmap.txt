@@ -1,8 +1,6 @@
 Roadmap
 -----------
 - add minimalistic UI (e.g. bootstrap)
-- explain how to run behind webserver
 - store uploaded files outside project root
 - serve ssl
-- quick check it can serve with manage runserver in prod mode as well
 - tackle issues found with ./manage.py check --deploy
