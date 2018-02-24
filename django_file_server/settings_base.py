@@ -77,6 +77,32 @@ TEMPLATES = [
     },
 ]
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'intermediate': {
+            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/django-file-server/error.log',
+            'formatter': 'intermediate',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        }
+    }
+}
+
 WSGI_APPLICATION = 'django_file_server.wsgi.application'
 
 

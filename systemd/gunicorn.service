@@ -6,15 +6,16 @@ After=network.target
 User=www-data
 Group=www-data
 WorkingDirectory=/srv/django-file-server
-ExecStart=/usr/bin/gunicorn \
---log-level debug \
---access-logfile /var/log/gunicorn/access.log \
---error-logfile /var/log/gunicorn/error.log \
---workers 3 \
---bind unix:/srv/django-file-server/django-file-server.sock \
-django_file_server.wsgi:application
+ExecStart=/usr/local/bin/gunicorn \
+--log-level=debug \
+--access-logfile=/var/log/gunicorn/access.log \
+--error-logfile=/var/log/gunicorn/error.log \
+--capture-output \
+--workers=3 \
+--bind=unix:/srv/django-file-server/django-file-server.sock \
+django_file_server.wsgi
 # for debugging: add to ExecStart
-#--env DJANGO_SETTINGS_MODULE=django_file_server.settings_devel \
+#--env=DJANGO_SETTINGS_MODULE=django_file_server.settings_devel \
 
 [Install]
 WantedBy=multi-user.target

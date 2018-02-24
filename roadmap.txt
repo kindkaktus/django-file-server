@@ -1,6 +1,10 @@
 Roadmap
 -----------
 - add minimalistic UI (e.g. bootstrap)
-- store uploaded files outside project root
+- removing files might be tricky (files and Db should be in sync...store files either in db or outside)
+- serve protected media files to be downloaded
+    https://stackoverflow.com/questions/39744587/serve-protected-media-files-with-django and https://github.com/sideffect0/django-fileprovider
+    https://stackoverflow.com/questions/1156246/having-django-serve-downloadable-files
+    https://github.com/johnsensible/django-sendfile
 - serve ssl
 - tackle issues found with ./manage.py check --deploy
