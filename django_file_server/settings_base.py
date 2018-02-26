@@ -83,7 +83,7 @@ TEMPLATES = [
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'formatters': {
         'intermediate': {
             'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
@@ -101,8 +101,19 @@ LOGGING = {
         'django': {
             'handlers': ['file'],
             'propagate': True,
+            'level': 'INFO',
+        },
+        'file_list': {
+            'handlers': ['file'],
+            'propagate': True,
             'level': 'DEBUG',
-        }
+        },
+        'login': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        #@todo move apps to apps/ dir to easier logging for all apps?
     }
 }
 

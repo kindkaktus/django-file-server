@@ -4,14 +4,18 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from fileprovider.utils import sendfile
+import logging
 
+from fileprovider.utils import sendfile
 from models import Document
 from forms import DocumentForm
+
+logger = logging.getLogger(__name__)
 
 
 @login_required(login_url="/login/")
 def list(request):
+    logger.info("Handling login request")
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -37,5 +41,6 @@ def list(request):
 
 @login_required(login_url="/login/")
 def download_media(request, file_id):
+    logger.info("Handling media request")
     file = get_object_or_404(Document, pk=file_id)
     return sendfile(file.path)
