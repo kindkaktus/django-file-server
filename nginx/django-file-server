@@ -3,12 +3,18 @@ server {
     #server_name server_domain_or_IP;
 
     location = /favicon.ico { access_log off; log_not_found off; }
+
     location /static/ {
         root /srv/django-file-server;
     }
 
+    location /media/ {
+        internal;
+        root   /srv/django-file-server;
+     }
+
     location / {
-            include proxy_params;
-            proxy_pass http://unix:/srv/django-file-server/django-file-server.sock;
-        }
+        include proxy_params;
+        proxy_pass http://unix:/srv/django-file-server/django-file-server.sock;
+    }
 }

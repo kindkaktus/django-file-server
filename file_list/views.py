@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from fileprovider.utils import sendfile
 
 from models import Document
 from forms import DocumentForm
@@ -31,3 +33,9 @@ def list(request):
         'list.html',
         {'documents': documents, 'form': form}
     )
+
+
+@login_required(login_url="/login/")
+def download_media(request, file_id):
+    file = get_object_or_404(Document, pk=file_id)
+    return sendfile(file.path)

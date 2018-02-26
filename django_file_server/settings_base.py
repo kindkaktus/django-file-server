@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'file_list',
+    # to effectively handle (media) file downloads with a front-end webserver
+    'fileprovider',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -47,6 +49,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'fileprovider.middleware.FileProviderMiddleware',
 ]
 
 # Add this to tell Django where to redirect after
@@ -131,8 +134,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+#MEDIA_URL = '/media/'
 
 #
 # Static files (CSS, JavaScript, Images)
