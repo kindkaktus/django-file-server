@@ -8,9 +8,11 @@ server {
         root /var/lib/django-file-server;
     }
 
+    # login is required to download medial files
     location /media/ {
-        # login is required to access media
+        # should equal to settings.SENDFILE_URL
         internal;
+        # should equal to settings.SENDFILE_ROOT without settings.SENDFILE_URL
         root   /var/lib/django-file-server;
     }
 

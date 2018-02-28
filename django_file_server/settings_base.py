@@ -36,8 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'file_list',
-    # to effectively handle (media) file downloads with a front-end webserver
-    'fileprovider',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -49,7 +47,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'fileprovider.middleware.FileProviderMiddleware',
 ]
 
 # Add this to tell Django where to redirect after
@@ -143,18 +140,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-MEDIA_ROOT = '/var/lib/django-file-server/media'
-MEDIA_URL = '/media'
-
-# IMPORTANT: KEEP IN SYNC WITH YOUR FRONT-END WEBSERVER
+#
+# Handling medial files
+#
+# User downloads file under MEDIA_URL
+#    -> django authenticates it and returns back to nginx with internal request to SENDFILE_URL
+#        -> nginx maps this request to the file under SENDFILE_ROOT
+# The reason to involve front-end webserver to serve files is efficiency (django can't efficiently server large files)
+#
+# IMPORTANT: KEEP THESE 3 VALUES IN SYNC WITH YOUR FRONT-END WEBSERVER
 # https://pypi.python.org/pypi/django-sendfile/
 SENDFILE_BACKEND = 'sendfile.backends.nginx'
-SENDFILE_ROOT = MEDIA_ROOT
-SENDFILE_URL = MEDIA_URL
-# IMPORTANT: KEEP IN SYNC WITH YOUR FRONT-END WEBSERVER
-# https://github.com/sideffect0/django-fileprovider
-# FILEPROVIDER_NAME = 'nginx'
+SENDFILE_URL = '/media'
+SENDFILE_ROOT = '/var/lib/django-file-server/media'
+
+MEDIA_URL = '/download/'
+# media files will be uploaded here
+MEDIA_ROOT = SENDFILE_ROOT
 
 #
 # Static files (CSS, JavaScript, Images)
