@@ -18,6 +18,7 @@ Initial setup:
     cd django-file-server
     sudo pip install --upgrade pip
     sudo pip install -r requirements.txt
+    sudo install -d -o www-data -g www-data /var/lib/django-file-server /var/run/django-file-server /var/log/django-file-server
     sudo -u www-data ./manage.py migrate
     sudo -u www-data ./manage.py createsuperuser
 
@@ -27,7 +28,7 @@ To run development server:
 
 Finally, setup production server (nginx -> gunicorn -> django app):
 
-   sudo ./install sh
+   sudo ./install.sh
 
 Checks:
 

@@ -12,7 +12,7 @@ ExecStart=/usr/local/bin/gunicorn \
 --error-logfile=/var/log/gunicorn/error.log \
 --capture-output \
 --workers=3 \
---bind=unix:/srv/django-file-server/django-file-server.sock \
+--bind=unix:/var/run/django-file-server/server.sock \
 django_file_server.wsgi
 # for debugging: add to ExecStart
 #--env=DJANGO_SETTINGS_MODULE=django_file_server.settings_devel \

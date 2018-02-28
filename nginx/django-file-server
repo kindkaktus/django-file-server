@@ -5,16 +5,17 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /static/ {
-        root /srv/django-file-server;
+        root /var/lib/django-file-server;
     }
 
     location /media/ {
+        # login is required to access media
         internal;
-        root   /srv/django-file-server;
-     }
+        root   /var/lib/django-file-server;
+    }
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/srv/django-file-server/django-file-server.sock;
+        proxy_pass http://unix:/var/run/django-file-server/server.sock;
     }
 }

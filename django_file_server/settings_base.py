@@ -113,7 +113,6 @@ LOGGING = {
             'propagate': True,
             'level': 'DEBUG',
         },
-        #@todo move apps to apps/ dir to easier logging for all apps?
     }
 }
 
@@ -126,7 +125,7 @@ WSGI_APPLICATION = 'django_file_server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'db.sqlite3'),
+        'NAME': os.path.join('/var/lib/django-file-server', 'db.sqlite3'),
     }
 }
 
@@ -145,8 +144,17 @@ USE_L10N = True
 USE_TZ = True
 
 
-#MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-#MEDIA_URL = '/media/'
+MEDIA_ROOT = '/var/lib/django-file-server/media'
+MEDIA_URL = '/media'
+
+# IMPORTANT: KEEP IN SYNC WITH YOUR FRONT-END WEBSERVER
+# https://pypi.python.org/pypi/django-sendfile/
+SENDFILE_BACKEND = 'sendfile.backends.nginx'
+SENDFILE_ROOT = MEDIA_ROOT
+SENDFILE_URL = MEDIA_URL
+# IMPORTANT: KEEP IN SYNC WITH YOUR FRONT-END WEBSERVER
+# https://github.com/sideffect0/django-fileprovider
+# FILEPROVIDER_NAME = 'nginx'
 
 #
 # Static files (CSS, JavaScript, Images)
@@ -155,12 +163,12 @@ USE_TZ = True
 
 # Input location of static files
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'assets'),
+    os.path.join(PROJECT_ROOT, 'static'),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
 ]
 # Static files should be copied here to be served by the webserver
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = '/var/lib/django-file-server/static'
 # URL of static files
 STATIC_URL = '/static/'
