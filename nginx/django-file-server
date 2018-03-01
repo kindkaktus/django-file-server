@@ -18,6 +18,9 @@ server {
 
     location / {
         include proxy_params;
+        client_max_body_size 2048m;
+        # @notice make sure the proxy also allows for large timeouts
+        proxy_read_timeout 600s;
         proxy_pass http://unix:/var/run/django-file-server/server.sock;
     }
 }

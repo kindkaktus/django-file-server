@@ -12,10 +12,13 @@ ExecStart=/usr/local/bin/gunicorn \
 --error-logfile=/var/log/gunicorn/error.log \
 --capture-output \
 --workers=3 \
+--timeout 600 \
 --bind=unix:/var/run/django-file-server/server.sock \
 django_file_server.wsgi
+
 # for debugging: add to ExecStart
 #--env=DJANGO_SETTINGS_MODULE=django_file_server.settings_devel \
+# notice that we use quite big timeout to allow uploading large files
 
 [Install]
 WantedBy=multi-user.target
