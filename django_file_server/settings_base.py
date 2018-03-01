@@ -52,7 +52,8 @@ MIDDLEWARE_CLASSES = [
 # Add this to tell Django where to redirect after
 # successful login
 
-LOGIN_REDIRECT_URL = '/list/'
+LIST_FILES_URL = '/list/'
+LOGIN_REDIRECT_URL = LIST_FILES_URL
 
 ROOT_URLCONF = 'django_file_server.urls'
 
@@ -139,6 +140,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOGIN_URL = '/login/'
 
 #
 # Handling medial files

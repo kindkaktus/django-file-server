@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 @login_required
 def list(request):
-    logger.debug("Handling login request {}".format(request))
+    logger.debug("Handling file list request {}".format(request))
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
