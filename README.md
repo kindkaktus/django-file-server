@@ -26,9 +26,11 @@ To run development server:
 ------------------
     sudo ./manage.py runserver 0.0.0.0:80  --settings=django_file_server.settings_devel
 
-Finally, setup production server (nginx -> gunicorn -> django app):
+Setup production server (nginx -> gunicorn -> django app):
 ------------------
    sudo ./install.sh
+
+Finally copy your SSL certificate and key to /etc/nginx/ssl-cert.pem and /etc/nginx/ssl-key.pem and restart nginx
 
 Checks:
 ------------------

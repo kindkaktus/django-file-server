@@ -12,6 +12,7 @@ setup_gunicorn() {
 
 setup_nginx() {
     sudo -u www-data ./manage.py collectstatic --clear --no-input
+    cp -f nginx/ssl-cert.pem nginx/ssl-key.pem /etc/nginx/
     rm -f /etc/nginx/sites-enabled/default
     cp -f nginx/django-file-server /etc/nginx/sites-available/
     ln -sf /etc/nginx/sites-available/django-file-server /etc/nginx/sites-enabled

@@ -1,6 +1,5 @@
 Roadmap
 -----------
-- serve ssl
 - tackle issues found with ./manage.py check --deploy
 - prettify UI (bootstrap)
 - allow file removal
