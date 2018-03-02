@@ -1,6 +1,5 @@
 Roadmap
 -----------
-- use 'honest' url containing file name iso artificial ids
 - prettify UI (bootstrap)
 - allow file removal
 - allow file renaming

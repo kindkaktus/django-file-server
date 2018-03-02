@@ -22,10 +22,6 @@ Initial setup:
     sudo -u www-data ./manage.py migrate
     sudo -u www-data ./manage.py createsuperuser
 
-To run development server:
-------------------
-    sudo ./manage.py runserver 0.0.0.0:80  --settings=django_file_server.settings_devel
-
 Setup production server (nginx -> gunicorn -> django app):
 ------------------
    sudo ./install.sh
