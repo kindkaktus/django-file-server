@@ -34,5 +34,5 @@ Finally copy your SSL certificate and key to /etc/nginx/ssl-cert.pem and /etc/ng
 
 Checks:
 ------------------
-    ./manage.py check --deploy
+   sudo -u www-data ./manage.py check --deploy
 
