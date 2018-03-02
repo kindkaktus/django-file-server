@@ -11,20 +11,18 @@ Production setup serves behind nginx + gunicorn.
 Django 1.11 is supported. Tested on Ubuntu 16.04 and Python 2.7
 
 
-Initial setup:
+Production setup (nginx -> gunicorn -> django app):
 ------------------
-    sudo apt-get -y install python-pip nginx
-    git clone https://github.com/kindkaktus/django-file-server
-    cd django-file-server
+    sudo apt-get -y install python-pip nginx git
+    sudo apt-get -y remove apache2
     sudo pip install --upgrade pip
+    sudo git clone https://github.com/kindkaktus/django-file-server /srv/django-file-server
+    cd /srv/django-file-server
     sudo pip install -r requirements.txt
     sudo install -d -o www-data -g www-data /var/lib/django-file-server /var/run/django-file-server /var/log/django-file-server
     sudo -u www-data ./manage.py migrate
     sudo -u www-data ./manage.py createsuperuser
-
-Setup production server (nginx -> gunicorn -> django app):
-------------------
-   sudo ./install.sh
+    sudo ./install.sh
 
 Finally copy your SSL certificate and key to /etc/nginx/ssl-cert.pem and /etc/nginx/ssl-key.pem and restart nginx
 

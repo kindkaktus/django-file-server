@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e
 
+fix_permissions() {
+    chown -R www-data:www-data /srv/django-file-server/
+}
+
 setup_gunicorn() {
-    ln -snf $(pwd) /srv/django-file-server
     cp -f systemd/gunicorn.service /etc/systemd/system/
     install -d -o www-data -g www-data /var/log/gunicorn
     systemctl daemon-reload
@@ -11,7 +14,8 @@ setup_gunicorn() {
 }
 
 setup_nginx() {
-    sudo -u www-data ./manage.py collectstatic --clear --no-input
+    ./manage.py collectstatic --clear --no-input
+    chown -R www-data:www-data /var/lib/django-file-server/
     cp -f nginx/ssl-cert.pem nginx/ssl-key.pem /etc/nginx/
     rm -f /etc/nginx/sites-enabled/default
     cp -f nginx/django-file-server /etc/nginx/sites-available/
@@ -19,5 +23,6 @@ setup_nginx() {
     systemctl restart nginx
 }
 
+fix_permissions
 setup_gunicorn
 setup_nginx
