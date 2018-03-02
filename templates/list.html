@@ -5,15 +5,15 @@
 <div class="row">
 
 <div class="jumbotron">
-    <!-- List of uploaded documents -->
-    {% if documents %}
+    <!-- List of uploads -->
+    {% if deliverables %}
       <ul>
-          {% for document in documents %}
-              <li><a href="{{ MEDIA_URL }}{{ document.id }}">{{ document.docfile.name }}</a></li>
+          {% for deliverable in deliverables %}
+              <li><a href="{{ MEDIA_URL }}{{ deliverable.id }}">{{ deliverable.docfile.name }}</a></li>
           {% endfor %}
       </ul>
     {% else %}
-      <p>No documents.</p>
+      <p>No deliverables</p>
     {% endif %}
 
     <!-- Upload form.-->
