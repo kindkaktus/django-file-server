@@ -13,20 +13,34 @@ Django 1.11 is supported. Tested on Ubuntu 16.04 and Python 2.7
 
 Production setup (nginx -> gunicorn -> django app):
 ------------------
-    sudo apt-get -y install python-pip nginx git
-    sudo apt-get -y remove apache2
-    sudo pip install --upgrade pip
-    sudo git clone https://github.com/kindkaktus/django-file-server /srv/django-file-server
-    cd /srv/django-file-server
-    sudo pip install -r requirements.txt
-    sudo install -d -o www-data -g www-data /var/lib/django-file-server /var/log/django-file-server
-    sudo -u www-data ./manage.py migrate
-    sudo -u www-data ./manage.py createsuperuser
-    sudo ./install.sh
 
-Finally copy your SSL certificate and key to /etc/nginx/ssl-cert.pem and /etc/nginx/ssl-key.pem and restart nginx
+Become root
+
+    $ sudo -i
+
+Install packages
+
+    # apt-get -y install python-pip nginx git
+    # apt-get -y remove apache2
+    # pip install --upgrade pip
+
+Install django file server
+
+    # git clone https://github.com/kindkaktus/django-file-server /srv/django-file-server
+    # cd /srv/django-file-server
+    # pip install -r requirements.txt
+    # install -d -o www-data -g www-data /var/lib/django-file-server /var/log/django-file-server
+    # sudo -u www-data ./manage.py migrate
+    # sudo -u www-data ./manage.py createsuperuser
+
+Crank it up
+
+    # ./install.sh
+
+Copy your SSL certificate and key to `/etc/nginx/ssl-cert.pem` and `/etc/nginx/ssl-key.pem` and restart nginx
 
 Checks:
 ------------------
-   sudo -u www-data ./manage.py check --deploy
+
+    $ sudo -u www-data ./manage.py check --deploy
 
