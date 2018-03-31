@@ -6,6 +6,12 @@ After=network.target
 User=www-data
 Group=www-data
 WorkingDirectory=/srv/django-file-server
+
+# Create directory for server.sock owned by www-data, need root permissions to do that
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/install -d -o www-data -g www-data /var/run/django-file-server
+
+# Run ExecStart with User=www-data / Group=www-data
 ExecStart=/usr/local/bin/gunicorn \
 --log-level=debug \
 --access-logfile=/var/log/gunicorn/access.log \
