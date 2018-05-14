@@ -1,7 +1,7 @@
 Roadmap
 -----------
 - prettify UI (bootstrap)
-- update to Django 2
+- fix deployment (do not mess up with home dir, deploy to the system dir)
 - add tests
 - allow file removal
 - allow file renaming
