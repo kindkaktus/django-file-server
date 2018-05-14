@@ -1,6 +1,8 @@
 Roadmap
 -----------
 - prettify UI (bootstrap)
+- update to Django 2
+- add tests
 - allow file removal
 - allow file renaming
 - use multiple folders (pre-defined, e.g. 'deliverables', 'documentation' etc)
