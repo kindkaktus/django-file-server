@@ -156,10 +156,10 @@ LOGIN_URL = '/login/'
 #
 # Handling medial files
 #
-# User downloads file under MEDIA_URL
-#    -> django authenticates it and returns back to nginx with internal request to SENDFILE_URL
-#        -> nginx maps this request to the file under SENDFILE_ROOT
-# The reason to involve front-end webserver to serve files is efficiency (django can't efficiently server large files)
+# User requests file download under MEDIA_URL
+#    -> django backend authenticates this request and returns back to the front-end webserver (nginx) with an internal request to SENDFILE_URL
+#        -> nginx maps this request to the local file under SENDFILE_ROOT and gives it back to the user
+# The reason to involve front-end webserver is efficiency (django can't efficiently serve large files)
 #
 # IMPORTANT: KEEP THESE 3 VALUES IN SYNC WITH YOUR FRONT-END WEBSERVER
 # https://pypi.python.org/pypi/django-sendfile/
