@@ -16,12 +16,10 @@ Including another URLconf
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.conf import settings
-from login.forms import LoginForm
 from django.views.generic import RedirectView
 
+from login.forms import LoginForm
 from file_list import views as file_views
-
-# app_name = 'django_file_server'
 
 urlpatterns = [
     # list files

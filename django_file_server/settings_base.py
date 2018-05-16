@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(PROJECT_ROOT, ...)
 import os
+import sys
 
-# Build paths inside the project like this: os.path.join(PROJECT_ROOT, ...)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +27,6 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'file_list',
 ]
+sys.path.append(os.path.join(BASE_DIR, 'apps'))
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,7 +156,7 @@ USE_TZ = True
 LOGIN_URL = '/login/'
 
 #
-# Handling medial files
+# Handling downloads
 #
 # User requests file download under MEDIA_URL
 #    -> django backend authenticates this request and returns back to the front-end webserver (nginx) with an internal request to SENDFILE_URL
