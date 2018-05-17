@@ -1,7 +1,7 @@
 Roadmap
 -----------
 - prettify UI (bootstrap)
-- fix deployment (do not mess up with home dir, deploy to the system dir)
+- externalize all variables for dir names e.g. /var/lib/django-file-server/static to env. variables
 - add tests
 - allow file removal
 - allow file renaming

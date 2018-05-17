@@ -14,28 +14,18 @@ Django 2 is supported. Tested on Ubuntu 16.04 with Django 2.0, nginx 1.10.3 and 
 Production setup (nginx -> gunicorn -> django app):
 ------------------
 
-Become root
-
-    $ sudo -i
-
 Install packages
 
-    # apt-get -y install nginx git
-    # apt-get -y remove apache2
+    # sudo apt-get -y install nginx git
+    # sudo apt-get -y remove apache2
     # curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 
 Install django file server
 
-    # git clone https://github.com/kindkaktus/django-file-server /srv/django-file-server
-    # cd /srv/django-file-server
-    # pip3 install -r requirements.txt
-    # install -d -o www-data -g www-data /var/lib/django-file-server /var/log/django-file-server
-    # sudo -u www-data ./manage.py migrate
-    # sudo -u www-data ./manage.py createsuperuser
-
-Crank it up
-
-    # ./install.sh
+    # git clone https://github.com/kindkaktus/django-file-server
+    # cd django-file-server
+    # sudo pip3 install -r requirements.txt
+    # sudo  ./install.sh
 
 Copy your SSL certificate and key to `/etc/nginx/ssl-cert.pem` and `/etc/nginx/ssl-key.pem` and restart nginx
 
