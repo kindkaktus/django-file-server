@@ -34,3 +34,8 @@ Checks:
 
     $ sudo -u www-data ./manage.py check --deploy
 
+
+Tests:
+------------------
+    $ ./manage.py test --settings=django_file_server.settings_test
+
