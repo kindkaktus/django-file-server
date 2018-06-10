@@ -2,6 +2,7 @@ Roadmap
 -----------
 - (active) add tests
 - the tests should run automatically (travis?)
+- update to django 2.1
 - prettify UI (bootstrap)
 - externalize all variables for dir names e.g. /var/lib/django-file-server/static to env. variables
 - allow file removal
