@@ -3,6 +3,3 @@
 *.pyc
 *.sublime-workspace
 
-db.sqlite3
-media/
-static/

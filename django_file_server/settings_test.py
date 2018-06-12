@@ -1,9 +1,10 @@
 from .settings_base import *
 
 DEBUG = True
-LOGGING['handlers']['file']['filename'] = 'test.log'
 
-#@todo see STATIC_URL and MEDIA_URL in https://docs.djangoproject.com/en/2.0/howto/static-files/
-# DATABASES['default']['NAME'] = 'test.sqlite3'
-# SENDFILE_ROOT = './media'
-# STATIC_ROOT = './static'
+_DEBUG_DIR = os.path.join(PROJECT_ROOT, 'debug')
+
+LOGGING['handlers']['file']['filename'] = os.path.join(_DEBUG_DIR, 'test.log')
+DATABASES['default']['NAME'] = os.path.join(_DEBUG_DIR, 'test.sqlite3')
+MEDIA_ROOT = os.path.join(_DEBUG_DIR, 'media')
+STATIC_ROOT = os.path.join(_DEBUG_DIR, 'static')
