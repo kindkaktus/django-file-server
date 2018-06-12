@@ -2,9 +2,10 @@ from .settings_base import *
 
 DEBUG = True
 
-_DEBUG_DIR = os.path.join(PROJECT_ROOT, 'debug')
 
-LOGGING['handlers']['file']['filename'] = os.path.join(_DEBUG_DIR, 'test.log')
-DATABASES['default']['NAME'] = os.path.join(_DEBUG_DIR, 'test.sqlite3')
-MEDIA_ROOT = os.path.join(_DEBUG_DIR, 'media')
-STATIC_ROOT = os.path.join(_DEBUG_DIR, 'static')
+STATIC_ROOT = './var/lib/django-file-server/static'
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+#@todo or just log to stdout/stderr
+# LOGGING['handlers']['file']['filename'] = os.path.join(MEDIA_ROOT, 'test.log')
+DATABASES['default']['NAME'] = ':memory:'
+#@todo test with --settings=django_file_server.settings_test manually (not only in tests)

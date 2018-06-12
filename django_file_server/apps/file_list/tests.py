@@ -60,10 +60,9 @@ class FileListViewTests(TestCase):
         self.assertEquals(len(response.context['deliverables']), 0)
 
         # upload file
-        #@todo permission error
-        # from django.core.files.uploadedfile import SimpleUploadedFile
-        # f = SimpleUploadedFile("file.txt", b"file_content")
-        # response = self.client.post(reverse('list'), {'docfile': f})
-        # self.assertEquals(len(response.context['deliverables']), 1)
-        # print(response.content)
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        f = SimpleUploadedFile("file.txt", b"file_content")
+        response = self.client.post(reverse('list'), {'docfile': f})
+        self.assertEquals(len(response.context['deliverables']), 1)
+        print(response.content)
 

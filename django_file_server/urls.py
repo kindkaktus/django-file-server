@@ -46,6 +46,7 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+    # In development/testing setup the statics and media files are handled by Django iso the front-end webserver
     from django.conf.urls.static import static
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

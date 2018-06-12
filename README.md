@@ -37,5 +37,6 @@ Checks:
 
 Tests:
 ------------------
+    $ ./setup_test.sh
     $ ./manage.py test --settings=django_file_server.settings_test
 
