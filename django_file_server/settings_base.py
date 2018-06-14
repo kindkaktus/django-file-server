@@ -100,8 +100,12 @@ LOGGING = {
         },
     },
     'handlers': {
+        'console': {
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'formatter': 'intermediate',
+        },
         'file': {
-            'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': '/var/log/django-file-server/error.log',
             'formatter': 'intermediate',
@@ -116,12 +120,12 @@ LOGGING = {
         'file_list': {
             'handlers': ['file'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
         'login': {
             'handlers': ['file'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
     }
 }
